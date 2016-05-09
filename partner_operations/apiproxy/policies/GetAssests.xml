@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="GetAssests">
+    <DisplayName>GetAssests</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>assetscalloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://{hch_baas}/{partner_assets_baas}?ql={request.queryparam.ql}</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

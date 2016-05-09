@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables async="false" continueOnError="false" enabled="true" name="GetAssetsData">
+    <DisplayName>GetAssetsData</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <URIPath/>
+    <QueryParam name="name"/>
+    <Header name="name"/>
+    <FormParam name="name"/>
+    <Variable name="name"/>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <JSONPayload>
+        <Variable name="assetsearchresult">
+            <JSONPath>$.entities</JSONPath>
+        </Variable>
+    </JSONPayload>
+    <Source clearPayload="false">assetscalloutResponse</Source>
+    <VariablePrefix/>
+    <XMLPayload stopPayloadProcessing="false">
+        <Namespaces/>
+        <Variable name="name" type="boolean">
+            <XPath>//test/example</XPath>
+        </Variable>
+    </XMLPayload>
+</ExtractVariables>

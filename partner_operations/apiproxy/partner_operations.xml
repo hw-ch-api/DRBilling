@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="6" name="partner_operations">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1462274179598</CreatedAt>
+    <CreatedBy>shridhar.nagaral@Honeywell.com</CreatedBy>
+    <Description>partner operations</Description>
+    <DisplayName>partner_operations</DisplayName>
+    <LastModifiedAt>1462518034027</LastModifiedAt>
+    <LastModifiedBy>shridhar.nagaral@Honeywell.com</LastModifiedBy>
+    <Policies>
+        <Policy>AddBaaS</Policy>
+        <Policy>DeleteBaaS</Policy>
+        <Policy>DeleteBaaSAsset</Policy>
+        <Policy>GetAssests</Policy>
+        <Policy>GetAssetsData</Policy>
+        <Policy>GetSearchResults</Policy>
+        <Policy>RetrunResultsForAssets</Policy>
+        <Policy>ReturnResults</Policy>
+        <Policy>SearchPartner</Policy>
+        <Policy>Setinput</Policy>
+        <Policy>SetinputForGet</Policy>
+        <Policy>SetinputForGetAssests</Policy>
+        <Policy>ShowAddSuccess</Policy>
+        <Policy>ShowDeleteSuccess</Policy>
+        <Policy>ShowUpdateSuccess</Policy>
+        <Policy>UpdateBaaS</Policy>
+        <Policy>config</Policy>
+        <Policy>getUUID</Policy>
+        <Policy>sendDeleteAssetResponse</Policy>
+        <Policy>setParamsForAdd</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://config.js</Resource>
+        <Resource>jsc://multipartparse.js</Resource>
+        <Resource>jsc://setParamsForAdd.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>
