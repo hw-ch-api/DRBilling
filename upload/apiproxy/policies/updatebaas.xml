@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="updatebaas">
+    <DisplayName>updatebaas</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <Set>
+            <Payload contentType="application/json">
+            {
+&quot;company_name&quot;:&quot;{request.formparam.company_name}&quot;,
+&quot;sgs_partner&quot;:&quot;{request.formparam.sgs_partner}&quot;,
+&quot;start_date&quot;:&quot;{request.formparam.start_date}&quot;,
+&quot;end_date&quot;:&quot;{request.formparam.end_date}&quot;,
+&quot;number_of_units&quot;:&quot;{request.formparam.number_of_units}&quot;,
+&quot;load_shed_program&quot;:&quot;{request.formparam.load_shed_program}&quot;,
+&quot;unit_billed_on&quot;:&quot;{request.formparam.units_billed}&quot;,
+&quot;install_fee_per_unit&quot;:&quot;{request.formparam.instal_fee_per_unit}&quot;,
+&quot;fee_per_unit&quot;:&quot;{request.formparam.fee_per_unit_year}&quot;,
+&quot;ee_participation&quot;:&quot;{request.formparam.ee_participation}&quot;,
+&quot;ee_fee_per_unit&quot;:&quot;{request.formparam.ee_fee_per_unit}&quot; ,
+&quot;row_state&quot;:&quot;1&quot; 
+}
+</Payload>
+            <Verb>PUT</Verb>
+        </Set>
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://api.usergrid.com/shridhar.nagaral/sandbox/assets/9acbf2ca-0ba7-11e6-b85a-bb506461d3b5</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

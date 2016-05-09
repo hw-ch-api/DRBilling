@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <!--<RouteRule name="upload">
+        <Condition>(proxy.pathsuffix MatchesPath "/upload") and (request.verb = "POST")</Condition>
+        <URL>https://api.usergrid.com/shridharnagaral1/sandbox/assets</URL>
+    </RouteRule> -->
+    <Description/>
+    <FaultRules/>
+    <Flows>
+        <Flow name="upload">
+            <Description>upload</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <Name>SetParams</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/upload") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="updateupload">
+            <Description>updateupload</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <Name>SetParams</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/updateupload") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="download">
+            <Description>download</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <!--   <Step>
+                    <Name>GetData</Name>
+                </Step> -->
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/download") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/passets</BasePath>
+        <Properties/>
+        <VirtualHost>default</VirtualHost>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+</ProxyEndpoint>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="upload">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1462275222105</CreatedAt>
+    <CreatedBy>shridhar.nagaral@Honeywell.com</CreatedBy>
+    <Description>upload</Description>
+    <DisplayName>upload</DisplayName>
+    <LastModifiedAt>1462736845766</LastModifiedAt>
+    <LastModifiedBy>shridhar.nagaral@Honeywell.com</LastModifiedBy>
+    <Policies>
+        <Policy>AssignMessage.DisablePathCopy</Policy>
+        <Policy>Download Header</Policy>
+        <Policy>GetData</Policy>
+        <Policy>SetParams</Policy>
+        <Policy>ShowAddSuccess</Policy>
+        <Policy>ShowEditSuccess</Policy>
+        <Policy>addeditedinfo</Policy>
+        <Policy>config</Policy>
+        <Policy>setAppend</Policy>
+        <Policy>setverb</Policy>
+        <Policy>updatebaas</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://SetParams.js</Resource>
+        <Resource>jsc://config.js</Resource>
+        <Resource>jsc://setappend.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>
