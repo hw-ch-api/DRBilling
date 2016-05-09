@@ -1,0 +1,201 @@
+<html>
+<head>
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/partnerweb/stylesheet/design.css" />
+
+<script>
+
+  var pData = '<%= uuid %>';
+  
+</script>
+
+<script src="js/view.js"></script>
+
+<script>
+
+
+
+</script>
+
+
+  
+  <style>
+  
+  td, th { 
+    outline:0; 
+    height:25px; 
+    width: 275px; 
+    padding-right:15px; 
+    padding-left:15px;       
+      
+  } 
+  
+  </style>
+  
+  <style type="text/css">
+    .Table
+    {
+        display: table;
+    }
+    .Title
+    {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+  .Cell {
+    display: table-cell;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: justify;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: inherit;
+    font-weight: 900;
+    color: #ffffff;
+    background: #2980b9;
+}
+
+.Row {
+    display: table-row;
+    background: #f6f6f6;
+}
+
+.Row:nth-of-type(odd) {
+    background: #e9e9e9;
+}
+
+</style>
+
+
+</head>
+<body>
+
+<% include header.ejs %>
+
+<center>
+
+<h1><b> View Partner	 </b></h1>
+
+<form name="partner" method="post" action="">
+
+<input type="hidden" id="uuid" name="uuid" value="<%=uuid%>"/>
+<input type="hidden" name="owner" value="" />
+
+<table class="">
+<tr rowspan="4"></tr>
+<tr>
+<td>Company Name</td>
+<td id="company_name"></td>
+</tr>
+
+<tr>
+<td>SGS Partner </td>
+<td><input type="checkbox" name="is_sgs" id="is_sgs" disabled="true"></td>
+</tr>
+
+<tr>
+<td>Start Date</td>
+<td id="start_date"></td>
+</tr>
+
+<tr>
+<td>End  Date</td>
+<td id="end_date"></td>
+</tr>
+
+<tr>
+<td>Number of Units</td>
+<td id="number_of_units"></td>
+</tr>
+
+<tr>
+<td>Load Shed Program</td>
+<td><input type="checkbox" name="load_shed_program" id="load_shed_program" disabled="true"></td>
+</tr>
+
+
+<tr>
+<td>Unit Billed on</td>
+<td>
+<table>
+<tr><td style="padding-left:0px"><input type="radio" name="units_billed" value="number_of_devices" disabled="true">Number of Devices </td></tr>
+<tr><td style="padding-left:0px"><input type="radio" name="units_billed" value="number_of_household" disabled="true" >Number of household</td></tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td> Install/Setup fee per Unit</td>
+<td id="instal_fee_per_unit"></td>
+</tr>
+
+<tr>
+<td>Fee per Unit/per</td>
+<td id="fee_per_unit_year"></td>
+</tr>
+
+
+<tr>
+<td>Energy Efficiency participation</td>
+<td><input type="checkbox" name="ee_participation" id ="ee_participation" disabled="true" ></td>
+</tr>
+
+<tr>
+<td>EE fee per Unit</td>
+<td id="ee_fee_per_unit"></td>
+</tr>
+
+<tr>
+<td>Statement of work Documents</td>
+<td> </td>
+</tr>
+
+<tr>
+<td>
+
+
+<div id="sowrows">
+
+</div>
+
+
+</td>
+<td></td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+<table width="500px">
+<tr>
+<td><input type="Button" name="Generate_Invoice" value="Generate Invoice"> </td>
+<td><a href="/partnerweb/update?partnerid=<%=uuid%>">Edit</a> </td>
+<td><a href="javascript:deletePartner()">Delete</a> </td>
+<td><input type="Button" name="Cancel" value="Cancel" onclick="javascript:document.location.href='/partnerweb'"> </td>
+
+</tr>
+</table>
+</form>
+
+<% include footer.ejs %>
+</center>
+
+
+</body>
+</html>

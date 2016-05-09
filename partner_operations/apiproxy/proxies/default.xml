@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules/>
+    <Flows>
+        <Flow name="add">
+            <Description>Add</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setParamsForAdd</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>AddBaaS</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>getUUID</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ShowAddSuccess</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/add") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="edit">
+            <Description/>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>setParamsForAdd</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>UpdateBaaS</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ShowUpdateSuccess</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/edit") and (request.verb = "POST")</Condition>
+        </Flow>
+        <Flow name="delete">
+            <Description>delete</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>DeleteBaaS</Name>
+                </Step>
+            </Request>
+            <Response>
+                <Step>
+                    <FaultRules/>
+                    <Name>ShowDeleteSuccess</Name>
+                </Step>
+            </Response>
+            <Condition>(proxy.pathsuffix MatchesPath "/delete") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="delete asset">
+            <Description>delete asset</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>DeleteBaaSAsset</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>sendDeleteAssetResponse</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/deleteasset") and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="search">
+            <Description>search</Description>
+            <Request>
+                <Step>
+                    <FaultRules/>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>Setinput</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SearchPartner</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>GetSearchResults</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>ReturnResults</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/search")  and (request.verb = "GET")</Condition>
+        </Flow>
+        <Flow name="get">
+            <Description>get</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SetinputForGet</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SearchPartner</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>GetSearchResults</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>ReturnResults</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/get")  and (request.verb = "GET") </Condition>
+        </Flow>
+        <Flow name="getassets">
+            <Description>getassets</Description>
+            <Request>
+                <Step>
+                    <Name>config</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>SetinputForGetAssests</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>GetAssests</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>GetAssetsData</Name>
+                </Step>
+                <Step>
+                    <FaultRules/>
+                    <Name>RetrunResultsForAssets</Name>
+                </Step>
+            </Request>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath "/getassets") and (request.verb = "GET")</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>config</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <HTTPProxyConnection>
+        <BasePath>/partner</BasePath>
+        <Properties/>
+        <VirtualHost>secure</VirtualHost>
+        <VirtualHost>default</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="noroute"/>
+</ProxyEndpoint>

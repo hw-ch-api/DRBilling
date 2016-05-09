@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript timeLimit="1200" async="false" continueOnError="false" enabled="true" name="SetParams">
+    <DisplayName>SetParams</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ResourceURL>jsc://SetParams.js</ResourceURL>
+</Javascript>

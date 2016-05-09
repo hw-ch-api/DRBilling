@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="false" enabled="true" name="addeditedinfo">
+    <DisplayName>addeditedinfo</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <Request clearPayload="true" variable="myRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>calloutResponse</Response>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>https://api.usergrid.com/shridhar.nagaral/sandbox/assets/{request.queryparam.uuid}?access_token=YWMtV99wZAkwEea7gNO-gzRnzAAAAVRmXBcAufUnrZzRJ2VCIJFOI80k-JIV0dQ</URL>
+    </HTTPTargetConnection>
+</ServiceCallout>

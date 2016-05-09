@@ -1,0 +1,260 @@
+<html>
+<head>
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/partnerweb/stylesheet/design.css" />
+
+<script>
+
+  var pData = '<%= uuid %>';
+  
+</script>
+
+<script src="js/edit.js"></script>
+
+<script>
+
+function handleSGSPartner()
+{
+   if (document.partner.is_sgs.checked) 
+  {
+      document.partner.number_of_units.disabled=true;
+      document.partner.instal_fee_per_unit.disabled=true;
+      document.partner.fee_per_unit_year.disabled=true;
+      document.partner.ee_fee_per_unit.disabled=true;
+      
+      document.partner.objload_shed_program.disabled=true;
+      document.partner.units_billed[0].disabled=true;
+      document.partner.units_billed[1].disabled=true;
+      document.partner.objee_participation.disabled=true;
+      
+      
+      document.partner.number_of_units.value="";
+      document.partner.instal_fee_per_unit.value="";
+      document.partner.fee_per_unit_year.value="";
+      document.partner.ee_fee_per_unit.value="";
+      
+      document.partner.objload_shed_program.checked=false;
+      document.partner.units_billed[0].checked=false;
+      document.partner.units_billed[1].checked=false;
+      document.partner.objee_participation.checked=false;
+      
+
+  }
+  else
+  {
+      document.partner.number_of_units.disabled=false;
+      document.partner.instal_fee_per_unit.disabled=false;
+      document.partner.fee_per_unit_year.disabled=false;
+      document.partner.ee_fee_per_unit.disabled=false;
+      
+      document.partner.objload_shed_program.disabled=false;
+      document.partner.units_billed[0].disabled=false;
+      document.partner.units_billed[1].disabled=false;
+      document.partner.objee_participation.disabled=false;
+
+  }
+
+    
+}
+
+
+</script>
+
+<style>
+  
+  td, th { 
+    outline:0; 
+    height:25px; 
+    width: 275px; 
+    padding-right:15px; 
+    padding-left:15px;       
+      
+  } 
+  
+  </style>
+
+  <style type="text/css">
+    .Table
+    {
+        display: table;
+    }
+    .Title
+    {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+  .Cell {
+    display: table-cell;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: justify;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: inherit;
+    font-weight: 900;
+    color: #ffffff;
+    background: #2980b9;
+}
+
+.Row {
+    display: table-row;
+    background: #f6f6f6;
+}
+
+.Row:nth-of-type(odd) {
+    background: #e9e9e9;
+}
+
+</style>
+
+
+</head>
+<body>
+
+<% include header.ejs %>
+
+<center>
+<h1><b> Edit  Partner	 </b></h1>
+<form name="partner" method="post" action="/partner/edit" onsubmit="return(validate());">
+
+<input type="hidden" name="uuid" value="<%=uuid%>"/>
+<input type="hidden" id="sgs_partner" name="sgs_partner"/>
+<input type="hidden" id="load_shed_program" name="load_shed_program"/>
+<input type="hidden" id="ee_participation" name="ee_participation"/>
+
+<input type="hidden" name="owner" value="" />
+
+
+<table>
+<tr rowspan="4"></tr>
+<tr>
+<td class="hlable">Name of the Utility Company *</td>
+<td><input type="text" name="company_name" id="company_name" maxlength="100"><span id="name"></span></td>
+</tr>
+
+<tr>
+<td class="hlable">SGS Partner *</td>
+<td><input type="checkbox" name="is_sgs" id="is_sgs" onClick="javascript:handleSGSPartner()" ><span id="sgs"></span></td>
+</tr>
+
+<tr>
+<td class="hlable">Start Date *</td>
+<td><input type="text"  style="width:120px" readonly="true" name="start_date" id="start_date" ><span id="sdate"></span> </td>
+</tr>
+
+<tr>
+<td class="hlable">End  Date</td>
+<td><input type="text"  style="width:120px" readonly="true"  name="end_date" id="end_date" > <span id="error_end_date"></span> </td>
+</tr>
+
+<tr>
+<td class="hlable">Number of Units *</td>
+<td><input type="text" name="number_of_units" id="no_unit"  maxlength="10"><span id="units"></span></td>
+</tr>
+
+<tr>
+<td class="hlable">Load Shed Program *</td>
+<td><input type="checkbox" name="objload_shed_program" id="objload_shed_program" > <span id="load"></span> </td>
+</tr>
+
+
+<tr>
+<td class="hlable">Unit Billed on *</td>
+<td>
+<table>
+<tr><td style="padding-left:0px"><input type="radio" name="units_billed" value="number_of_devices" >Number of Devices </td></tr>
+<tr><td style="padding-left:0px"><input type="radio" name="units_billed" value="number_of_household">Number of household <span id="bill"></span> </td></tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td class="hlable"> Install/Setup fee per Unit *</td>
+<td><input type="text" name="instal_fee_per_unit" id="fee" value=""  maxlength="20"> $ <span id="setup"></span></td>
+</tr>
+
+<tr>
+<td class="hlable">Fee per Unit/per *</td>
+<td><input type="text" name="fee_per_unit_year" id="fee_per_unit_year"  maxlength="20"> $ <span id="fees"></span></td>
+</tr>
+
+
+<tr>
+<td class="hlable">Energy Efficiency participation *</td>
+<td><input type="checkbox" id="objee_participation" name="objee_participation" onclick="handleClick(this)"><span id="energy"></span></td>
+</tr>
+
+<tr>
+<td class="hlable">EE fee per Unit </td>
+<td><input type="text" name="ee_fee_per_unit" id="ee_fee_per_unit"  maxlength="20"> $ <span id="EEfee"></span></td>
+</tr>
+
+</table>
+
+</form>
+
+<div id="sowrows">
+
+</div>
+
+
+<form name="assets" action="/passets/updateupload" method="post" enctype="multipart/form-data">
+
+<table>
+
+
+<tr>
+<td class="hlable">Statement of work 
+<input type="hidden" name="uuid" value="<%=uuid%>"/>
+<input type="hidden" name="name" value=""/>
+
+<input type="hidden"  name="path" value=""/>
+
+<input type="hidden"  name="owner" value=""/> 
+
+<input type="file" name="file" /> 
+
+</td>
+
+
+<td>
+<input type="button" value="Upload" onclick="javascript:uploadFiles()"/> 
+</td>
+
+</tr>
+</table>
+
+</form>
+
+<table width="400px">
+<tr>
+<td><button type="button" onclick="javascript:validate()" class="btn btn-primary">Save</button></td>
+
+<td><input type="Button" name="Cancel" value="Cancel" onclick="javascript:document.location.href='/partnerweb'"> </td>
+</tr>
+</table>
+
+
+<% include footer.ejs %>
+
+</center>
+
+
+</body>
+</html>

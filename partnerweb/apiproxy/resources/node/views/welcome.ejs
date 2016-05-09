@@ -1,0 +1,225 @@
+<html>
+<head>
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+   <link rel="stylesheet" href="/partnerweb/stylesheet/design.css" />
+  
+<script>
+
+$(document).ready(function(){
+ 
+ search(); 
+   
+});
+
+
+function addMainDiv()
+{
+    
+    var maindiv = document.createElement('div');
+   	maindiv.className ="Table";
+   	maindiv.id="maindiv";
+   	
+   	var headingDiv = document.createElement('div');
+   	headingDiv.className="Heading";
+   	
+   	var thheadingDiv1 = document.createElement('div');
+   	thheadingDiv1.className="Cell";
+   	thheadingDiv1.innerHTML = "<p>Parner Name</p>";
+
+   	var thheadingDiv2 = document.createElement('div');
+   	thheadingDiv2.className="Cell";
+   	thheadingDiv2.innerHTML = "<p>UUID</p>";
+   	
+   	headingDiv.appendChild(thheadingDiv1);
+   	headingDiv.appendChild(thheadingDiv2);
+   	
+   	maindiv.appendChild(headingDiv);
+   	
+   	var rowsDiv = document.getElementById('rows');
+   	
+   		rowsDiv.appendChild(maindiv);
+
+}
+
+function clearDIV(pDivName)
+{
+	var lDIV = document.getElementById(pDivName);
+	var lCount;
+	if (lDIV && lDIV.childNodes != null)
+	{
+		if (lDIV.childNodes.length > 0)
+		{
+			for(lCount = lDIV.childNodes.length - 1; lCount >= 0; lCount--)
+			{
+				lDIV.removeChild(lDIV.childNodes[lCount]);
+			}
+		}
+	}
+}
+
+function search()
+{
+ 
+		var pData = document.getElementById("company_name").value;
+		var aurl ="/partner/search?partnerid="+pData;
+		
+		// avoid browser cache issue 
+		var currentTime = +new Date();
+		aurl = aurl+ "&t="+currentTime
+		
+		
+				
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+	//	alert("response="+xmlhttp.responseText);
+        var jsonData = JSON.parse(xmlhttp.responseText);
+        myFunction(jsonData);
+     }
+ };
+xmlhttp.open("GET", aurl, true);
+xmlhttp.send();
+		
+ 
+}
+
+function myFunction(jsonData) {
+    
+        clearDIV("rows");
+        
+        if(jsonData.entities.length>0)
+        {
+            addMainDiv();
+        }
+        else
+        {
+            var rowsDiv = document.getElementById('rows');
+            rowsDiv.innerHTML = "<p> No Records Found</p>";
+        }
+    
+	for (var i = 0; i < jsonData.entities.length; i++) {
+    var counter = jsonData.entities[i];
+   // alert("counter."+counter.company_name);
+   
+   	var maindiv = document.getElementById('maindiv');
+   	
+   	var row = document.createElement('div');
+   	row.className ="Row";
+   	
+	var partner = document.createElement('div');
+	partner.id = "row"+i;
+	partner.className = "Cell";
+	var html = "<p><a href=/partnerweb/display?partnerid="+counter.uuid+">"+counter.company_name+"</a></p>";
+	partner.innerHTML = html;
+	row.appendChild(partner);
+	var uuid = document.createElement('div');
+	uuid.id = "uuid"+i;
+	uuid.className = "Cell";
+	var html = "<p>"+counter.uuid+"</p>";
+	uuid.innerHTML = html;
+	row.appendChild(uuid);
+	
+	maindiv.appendChild(row);
+	
+	
+	
+
+   
+}
+	
+}
+</script>
+
+<style type="text/css">
+    .Table
+    {
+        display: table;
+    }
+    .Title
+    {
+        display: table-caption;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+  .Cell {
+    display: table-cell;
+    border-width: thin;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: justify;
+    padding-top: 6px;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+}
+
+.Heading {
+    display: table-row;
+    font-weight: bold;
+    text-align: inherit;
+    font-weight: 900;
+    color: #ffffff;
+    background: #2980b9;
+}
+
+.Row {
+    display: table-row;
+    background: #f6f6f6;
+}
+
+.Row:nth-of-type(odd) {
+    background: #e9e9e9;
+}
+
+</style>
+
+</head>
+<body>
+
+<% include header.ejs %>
+
+<center>
+<br/>
+<br/>
+<b>Welcome </b>
+<br/>
+<br/>
+<form name="partner" method="post" action="">
+<table class="">
+<tr>
+<td><input type="text" name="company_name" id="company_name"></td>
+<td class="hlable"><a href="javascript:search()">Search</button></td>
+<td class="hlable"><a href="/partnerweb/add">Add</button></td>
+
+</tr>
+</table>
+<br/>
+<br/>
+<div id="rows">
+
+
+
+</div>
+
+
+<% include footer.ejs %>
+</center>
+
+
+
+</body>
+</html>
+
+
+
