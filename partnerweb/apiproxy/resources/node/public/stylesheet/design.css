@@ -1,0 +1,138 @@
+#name{
+	color: red;
+}
+#sgs{
+	color: red;
+}
+#sdate{
+	color: red;
+}
+#units{
+	color: red;
+}
+#unit{
+	color: red;
+}#load{
+	color: red;
+}#bill{
+	color: red;
+}#setup{
+	color: red;
+}#fees{
+	color: red;
+}#energy{
+	color: red;
+}#EEfee{
+	color: red;
+}
+#error_end_date{
+    color: red;
+}
+
+table {
+    white-space: normal;
+    line-height: normal;
+    font-weight: normal;
+    font-size: medium;
+    font-variant: normal;
+    font-style: normal;
+    color: -webkit-text;
+    text-align: start;
+}
+
+
+
+body{
+	background-color: 	white;
+}
+
+#header{
+	background-color: #F0F0F0 ;
+	height:50px;
+	
+	padding-top:15px;
+	padding-bottom: 15px;
+	
+}
+#options{
+	background-color:	#A0A0A0 ;
+	height: 20px;
+	text-align:right;
+	
+}
+
+
+
+#grad {
+	height:2px;
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(-90deg, red, yellow); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(-90deg, red, yellow); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(-90deg, red, yellow); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(-90deg, red, yellow); /* Standard syntax */
+}
+
+#link
+{
+	
+	background-color:black;
+	height:20px;
+}
+.menu1{
+	color:white;
+	text-decoration: none;
+	text-align:left;
+}
+.menu{
+	
+      
+    color: #424242;
+    padding-right: 18px;
+    padding-left: 18px;
+    text-decoration: none;
+}
+
+
+
+.textbox { 
+    border: 1px solid #848484;
+    outline:0; 
+    height:25px; 
+    width: 275px; 
+    padding-right:15px; 
+    padding-left:15px; 
+  } 
+  
+.rowdata { 
+    outline:0; 
+    height:25px; 
+    width: 275px; 
+    padding-right:15px; 
+    padding-left:15px; 
+  }   
+
+  #footer1 {
+	border-top: 2px solid #A0A0A0;
+	margin: 2px 0 0;
+	padding: 16px 0;
+	height:10px;
+	padding-top:1px;
+#footer div {
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 0;
+	width: 960px;
+}
+#footer div p {
+	color: green;
+	float: left;
+	font-size: 11px;
+	line-height: 27px;
+	margin: 0;
+	padding: 0 0 0 10px;
+}
+
+}
+
+  
+

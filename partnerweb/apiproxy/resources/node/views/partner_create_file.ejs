@@ -1,0 +1,320 @@
+<html>
+
+<head>
+
+<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+  <link rel="stylesheet" href="/partnerweb/stylesheet/design.css" />
+  
+<script src="js/create.js"></script>
+
+<script>
+
+function setPartnerForm()
+{
+    
+    document.Partner.owner.value = '<%=owner%>';
+    
+    document.Partner.company_name.value = '<%=company_name%>';
+    document.Partner.start_date.value = '<%=start_date%>';
+    document.Partner.end_date.value = '<%=end_date%>';
+    document.Partner.number_of_units.value = '<%=number_of_units%>';
+    document.Partner.instal_fee_per_unit.value = '<%=instal_fee_per_unit%>';
+    document.Partner.fee_per_unit_year.value = '<%=fee_per_unit_year%>';
+    document.Partner.ee_fee_per_unit.value = '<%=ee_fee_per_unit%>';
+    
+    
+    var sgs_partner = '<%=sgs_partner%>';
+    var units_billed = '<%=units_billed%>';
+    var ee_participation = '<%=ee_participation%>';
+    var load_shed_program = '<%=load_shed_program%>';
+    
+    if(units_billed && units_billed=="number_of_devices")
+    {
+        document.Partner.units_billed[0].checked="true";
+    }
+    
+    if(units_billed && units_billed=="number_of_household")
+    {
+        document.Partner.units_billed[1].checked="true";
+    }
+    
+    
+    if(sgs_partner && sgs_partner== "true")
+    {
+        document.Partner.is_sgs.checked="true";
+        handleSGSPartner();
+    }
+    
+    if(ee_participation && ee_participation== "true")
+    {
+        document.Partner.objee_participation.checked="true";
+    }
+
+    if(load_shed_program && load_shed_program== "true")
+    {
+        document.Partner.objload_shed_program.checked="true";
+    }
+    
+    getAssetsForOwner();
+    
+}
+
+
+function handleSGSPartner()
+{
+   if (document.Partner.is_sgs.checked) 
+  {
+      document.Partner.number_of_units.disabled=true;
+      document.Partner.instal_fee_per_unit.disabled=true;
+      document.Partner.fee_per_unit_year.disabled=true;
+      document.Partner.ee_fee_per_unit.disabled=true;
+      
+      document.Partner.objload_shed_program.disabled=true;
+      document.Partner.units_billed[0].disabled=true;
+      document.Partner.units_billed[1].disabled=true;
+      document.Partner.objee_participation.disabled=true;
+      
+      
+      document.Partner.number_of_units.value="";
+      document.Partner.instal_fee_per_unit.value="";
+      document.Partner.fee_per_unit_year.value="";
+      document.Partner.ee_fee_per_unit.value="";
+      
+      document.Partner.objload_shed_program.checked=false;
+      document.Partner.units_billed[0].checked=false;
+      document.Partner.units_billed[1].checked=false;
+      document.Partner.objee_participation.checked=false;
+      
+
+  }
+  else
+  {
+      document.Partner.number_of_units.disabled=false;
+      document.Partner.instal_fee_per_unit.disabled=false;
+      document.Partner.fee_per_unit_year.disabled=false;
+      document.Partner.ee_fee_per_unit.disabled=false;
+      
+      document.Partner.objload_shed_program.disabled=false;
+      document.Partner.units_billed[0].disabled=false;
+      document.Partner.units_billed[1].disabled=false;
+      document.Partner.objee_participation.disabled=false;
+
+  }
+
+    
+}
+
+</script>
+
+</head>
+<body>
+
+<% include header.ejs %>
+
+<center>
+<h1><b>Add New Partner	 </b></h1>
+
+
+<form name="Partner" method="post" action="/partner/add" onsubmit="return(validate());" >
+
+<input type="hidden" id="sgs_partner" name="sgs_partner"/>
+<input type="hidden" id="load_shed_program" name="load_shed_program"/>
+<input type="hidden" id="ee_participation" name="ee_participation"/>
+
+<input type="hidden"  name="owner"  value=""/> 
+
+<table class="registration_table">
+
+
+<tr>
+
+<td class="hlable">Name of the Utility Company *</td>
+<td><input type="text" class="textbox" name="company_name" id=""  maxlength="100" placeholder="Name of the Utility Company" value=""><span id="name"></span></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable">SGS Partner*</td>
+<td><input type="checkbox" name="is_sgs" value="true" onClick="javascript:handleSGSPartner()" ><span id="sgs"></span></td>
+</tr>
+<tr></tr>
+
+
+<tr>
+<td class="hlable">Start Date*</td>
+<td><input type="" style="width:120px" readonly="true" class="textbox" name="start_date" id="start_date" placeholder="Start Date" value=""><span id="sdate"></span></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable">End  Date</td>
+<td><input type="text"  style="width:120px" readonly="true"  class="textbox" name="end_date" id="end_date" placeholder="End Date"><span id="error_end_date"></span></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable">Number of Units</td>
+<td><input type="text" class="textbox" name="number_of_units"  maxlength="10" id="no_unit" placeholder="Number of Units" value=""><span id="units"></span></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable">Load Shed Program*</td>
+<td><input type="checkbox" name="objload_shed_program" value="true"><span id="load"></span></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable">Unit Billed on*</td>
+<td>
+<table>
+<tr><td style="padding-left:0px"><input type="radio" name="units_billed" value="number_of_devices">Number of Devices </td></tr>
+<tr><td style="padding-left:0px"><input type="radio" name="units_billed" value="number_of_household">Number of household <span id="bill"></span></td></tr>
+</table>
+</td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable"> Install/Setup fee per Unit*</td>
+<td><input type="text" class="textbox" name="instal_fee_per_unit"  maxlength="20" id="fee" placeholder="Install/Setup fee per Unit" value=""> $ <span id="setup"></span></td>
+</tr> 
+<tr></tr>
+
+<tr>
+<td class="hlable">Fee per Unit/year*</td>
+<td><input type="text" class="textbox" name="fee_per_unit_year"  maxlength="20" id="perunit" placeholder="Fee per Unit/year" value=""> $ <span id="fees"></span></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable">Energy Efficiency participation*</td>
+<td><input type="checkbox" name="objee_participation" value="true" id="objenergy_efficiency" ><span id="energy"></span></td>
+</tr>
+<tr></tr>
+
+<tr>
+<td class="hlable">EE fee per Unit</td>
+<td><input type="text" class="textbox"  name="ee_fee_per_unit"  maxlength="20" id="text"  placeholder="EE fee per Unit"> $ <span id="EEfee"></span></td>
+</tr>
+<tr></tr>
+
+</table>
+<br/>
+<br/>
+
+
+</div>
+
+</form>
+
+<form name="assets" action="/passets/upload" method="post" enctype="multipart/form-data">
+
+
+<input type="hidden" name="company_name" value=""/>
+<input type="hidden" name="start_date" value=""/>
+<input type="hidden" name="end_date" value=""/>
+<input type="hidden" name="number_of_units" value=""/>
+<input type="hidden" name="instal_fee_per_unit" value=""/>
+<input type="hidden" name="fee_per_unit_year" value=""/>
+<input type="hidden" name="ee_fee_per_unit" value=""/>
+
+<input type="hidden" name="units_billed" value=""/>
+
+<input type="hidden"  name="sgs_partner"/>
+<input type="hidden"  name="load_shed_program"/>
+<input type="hidden"  name="ee_participation"/>
+
+<table>
+
+<tr>
+<td class="hlable"><span id="uploadedlable"> Uploaded Files</span> </td>
+
+<td colspan="2">
+<div id="mainuploaddiv"></div>
+  
+</td>
+</tr>
+
+<tr>
+<td class="hlable">Statement of work </td>
+
+<td>
+
+
+<input type="hidden" name="name" value=""/>
+
+<input type="hidden"  name="path" value=""/>
+
+<input type="hidden"  name="owner" value=""/> 
+
+
+
+<div id="mainuploaddiv">
+
+
+</div>
+
+
+<input type="file" name="file" /> <input type="button" value="Upload" onclick="javascript:uploadFiles()"/> 
+
+
+
+</td>
+ <td>
+
+ </td>
+</tr>
+</table>
+
+<table width="400px">
+<tr>
+<td><button type="button" onclick="javascript:validate()" class="btn btn-primary">Save</button></td>
+
+<td><input type="button" onClick="javascript:document.Partner.reset()" name="cancel" value="Cancel"></td>
+</tr>
+</table>
+
+</form>
+<% include footer.ejs %>
+
+</center>
+
+
+
+<script>
+
+ var uuidForPartner = generateUUID();
+  
+ var ownerFrom = '<%=owner%>';
+ 
+ //partnerData = decodeURI(partnerData);
+ 
+ if(ownerFrom=='undefined')
+ {
+    document.Partner.owner.value=uuidForPartner;
+ }
+ else
+ {
+    // upload case
+    
+  //  var partnerObj = new Object();
+    
+  //  partnerObj = JSON.parse(partnerData);
+    
+    setPartnerForm();
+ }
+
+</script>
+</body>
+</html>

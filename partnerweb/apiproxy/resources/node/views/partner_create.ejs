@@ -1,0 +1,108 @@
+<html>
+<head>
+<script src="jquery.min.js"></script>
+<script src="jquery.validate.min"></script>
+
+<link rel="stylesheet" href="jquery-ui.css">
+  <script src="jquery-1.10.2.js"></script>
+  <script src="jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#start_date" ).datepicker();
+	$( "#end_date" ).datepicker();
+  });
+  </script>
+
+</head>
+<body>
+
+
+
+<center>
+<br/>
+<br/>
+<b>Add Partner	 </b>
+<br/>
+<br/>
+<br/>
+<form name="partner" method="post" action="">
+<table class="">
+<tr rowspan="4"></tr>
+<tr>
+<td class="hlable">Name of the Utility Company *</td>
+<td><input type="text" name="company_name"></td>
+</tr>
+
+<tr>
+<td class="hlable">SGS Partner </td>
+<td><input type="checkbox" name="is_sgs"></td>
+</tr>
+
+<tr>
+<td class="hlable">Start Date</td>
+<td><input type="text" name="start_date" id="start_date"></td>
+</tr>
+
+<tr>
+<td class="hlable">End  Date</td>
+<td><input type="text" name="end_date" id="end_date"></td>
+</tr>
+
+<tr>
+<td class="hlable">Number of Units</td>
+<td><input type="text" name="number_of_units"></td>
+</tr>
+
+<tr>
+<td class="hlable">Load Shed Program</td>
+<td><input type="checkbox" name="load_shed_program"></td>
+</tr>
+
+
+<tr>
+<td class="hlable">Unit Billed on</td>
+<td>
+<table>
+<tr><td><input type="radio" name="units_billed" value="number_of_devices">Number of Devices </td></tr>
+<tr><td><input type="radio" name="units_billed" value="number_of_household">Number of household</td></tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td class="hlable"> Install/Setup fee per Unit</td>
+<td><input type="text" name="instal_fee_per_unit"></td>
+</tr>
+
+<tr>
+<td class="hlable">Fee per Unit/per</td>
+<td><input type="text" name="fee_per_unit_year"></td>
+</tr>
+
+
+<tr>
+<td class="hlable">Energy Efficiency participation</td>
+<td><input type="checkbox" name="fee_per_unit_year"></td>
+</tr>
+
+<tr>
+<td class="hlable">EE fee per Unit</td>
+<td><input type="text" name="ee_fee_per_unit"></td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+<table>
+<tr>
+<td><input type="Button" name="save" value="Save"> </td>
+<td><input type="Button" name="cancel" value="cancel"></td>
+</tr>
+</table>
+</form>
+
+</center>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="2" name="partnerweb">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1462268255329</CreatedAt>
+    <CreatedBy>shridhar.nagaral@honeywell.com</CreatedBy>
+    <Description>partner web app</Description>
+    <DisplayName>partnerweb</DisplayName>
+    <LastModifiedAt>1462737087129</LastModifiedAt>
+    <LastModifiedBy>shridhar.nagaral@honeywell.com</LastModifiedBy>
+    <Policies>
+        <Policy>Partner-Baas</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>node://node_modules_ejs-locals.zip</Resource>
+        <Resource>node://node_modules_ejs.zip</Resource>
+        <Resource>node://node_modules_express-session.zip</Resource>
+        <Resource>node://node_modules_express.zip</Resource>
+        <Resource>node://package.json</Resource>
+        <Resource>node://partner.js</Resource>
+        <Resource>node://public/images/hchlogo.jpg</Resource>
+        <Resource>node://public/js/create.js</Resource>
+        <Resource>node://public/js/edit.js</Resource>
+        <Resource>node://public/js/view.js</Resource>
+        <Resource>node://public/stylesheet/design.css</Resource>
+        <Resource>node://views/footer.ejs</Resource>
+        <Resource>node://views/header.ejs</Resource>
+        <Resource>node://views/jquery-ui.css</Resource>
+        <Resource>node://views/jquery-ui.js</Resource>
+        <Resource>node://views/jquery.min.js</Resource>
+        <Resource>node://views/jquery.validate.min.js</Resource>
+        <Resource>node://views/partner_create.ejs</Resource>
+        <Resource>node://views/partner_create_file.ejs</Resource>
+        <Resource>node://views/partner_edit_file.ejs</Resource>
+        <Resource>node://views/partner_view.ejs</Resource>
+        <Resource>node://views/welcome.ejs</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>default</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>
